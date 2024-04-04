@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.shiva.graphql.models.Author;
 import com.shiva.graphql.models.Book;
 import com.shiva.graphql.models.Rating;
 
@@ -36,5 +37,13 @@ public class BookRepository {
                 authorRepository.findByName("Mark Heckler")));
         books.add(new Book(3, "Hacking with Spring Boot 2.3", 392, Rating.FIVE_STARS,
                 authorRepository.findByName("Greg Turnquist")));
+    }
+
+    public Book createBook(Book book) {
+        authorRepository.add(book.author());
+        Book newBook = new Book(book.id(), book.title(), book.pages(), Rating.THREE_STARS, book.author()); 
+        books.add(newBook);
+        System.out.println(books);
+        return newBook;
     }
 }
