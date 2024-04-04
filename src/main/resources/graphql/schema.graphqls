@@ -1,5 +1,11 @@
 type Query {
     allBooks: [Book]
+    findOne(id: ID!): Book
+}
+
+type Mutation {
+    createBook(book:BookInput): Book
+    updateBook(book:BookInput): Book
 }
 
 type Book {
@@ -20,4 +26,23 @@ type Author {
     firstName: String
     lastName: String
     books: [Book]
+}
+
+input BookInput {
+    id: ID!
+    title: String
+    pages: Int
+    author: AuthorInput
+    rating: Int 
+}
+
+input AuthorInput {
+    id: ID!
+    firstName: String
+    lastName: String
+}
+
+input RatingInput {
+    rating: String
+    star: String
 }

@@ -39,4 +39,8 @@ public class AuthorRepository {
         authors.add(new Author(3, "Greg", "Turnquist"));
     }
 
+    public void add(Author author) {
+        authors.add(author);
+    }
+
 }
